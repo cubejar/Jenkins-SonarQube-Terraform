@@ -117,7 +117,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
 7. Create Jenkins Pipeline to Build and Push Docker Image to DockerHub
 	- Jenkins => New Item => Name: Swiggy-CICD => Pipeline => Ok
-		- => Discard old builds: Max # of builds: 2
+		- => Discard old builds: Max # of builds: 2 	
 
 	- Pipeline Script: Copy the steps until Trivy first
 		- => (
