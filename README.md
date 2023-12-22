@@ -15,7 +15,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
    provider.tf   
 	- aws ~>5.0
-	- region: us-east-1 or ap-south-1
+	- region: use-west-2 # us-east-1 or ap-south-1
 
    install.sh
 	- jdk temurin-17-jdk
