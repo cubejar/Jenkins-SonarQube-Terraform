@@ -8,21 +8,21 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 1. Create EC2 instance using Terraform
 
    main.tf 
-   - t2.large
-   - keyname: Linux-VM-Key7
-   - Vol Size: 40G
-   - Ingress: [22, 80, 443, 8080, 9000, 3000]
+	- t2.large
+	- keyname: Linux-VM-Key7
+	- Vol Size: 40G
+	- Ingress: [22, 80, 443, 8080, 9000, 3000]
 
    provider.tf   
-   - aws ~>5.0
-   - region: us-east-1 or ap-south-1
+	- aws ~>5.0
+	- region: us-east-1 or ap-south-1
 
    install.sh
-   - jdk temurin-17-jdk
-   - jenkins
-   - install docker
-   - sonarqube (from Dockerhub) as a container in the EC2
-   - install trivy
+	- jdk temurin-17-jdk
+	- jenkins (Ex: jenkins --version 2.426.2)
+	- install docker (docker version Ex: 24.0.5) 
+	- sonarqube (from Dockerhub) as a container in the EC2 (Ex: http://54.213.190.162:9000/api/server/version Ex: Version: 9.9.3.79811) 
+	- install trivy (trivy --version Ex: Version: 0.48.1)
 
 ===========================================================================================
 
@@ -49,8 +49,8 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 	- ssh to the EC2: ssh -i key ubuntu@<<Public IP>>
   	
   	- http://<<Public IP>>:8080
-  	- install suggested plugins
-  	- create an admin user/password
+	  	- install suggested plugins
+	  	- create an admin user/password
 
   	- Jenkins => plugins: Install   
   	- Eclipse Temurin installer
