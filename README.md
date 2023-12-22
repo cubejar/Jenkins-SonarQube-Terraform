@@ -69,13 +69,20 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 	  	- Add NodeJS => node16
 
   	- JDK installation
-  		- jdk17 => Add installer => install from adaptium.net => jdk-17.0.8.1+1
+  		- jdk17 => Add installer => install from adoptium.net => jdk-17.0.8.1+1
 
   	- Docker: Add docker
   		- docker => Install automatically => Add installer => latest => Download from docker
 
   	- SonarQube:
   		- sonarqube-scanner => Install automatically => Install from Maven Central : 5.0.1.3006
+      
+    - Apply => Save
+  
+    - Note: If you wante to remove the warnings on:
+	    - 	Quality Gates Plugin 2.5
+	    - 	Sonar Quality Gates Plugin 1.3.1
+         - => Configure which of these warnings are shown => Hidden security warnings => Remove checkboxes
 
 ===========================================================================================
 
