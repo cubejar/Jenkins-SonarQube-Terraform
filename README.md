@@ -278,8 +278,9 @@ Note: trivy scan results
      
    - Example:
 
-   		1--Login to the EC2 instance 
+   		1--Login to the EC2 instance
 
+   			
      		2--Install kubectl on Jenkins 
 	
 			 sudo apt update
