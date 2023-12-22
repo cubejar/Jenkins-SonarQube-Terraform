@@ -88,45 +88,51 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
 6. Configure SonarQube and Integrate with Jenkins
  	- SonarQube is running as a container in the EC2 instance
- 	- http://<<Public IP>>:9000
- 	- Set new pw
+ 		- http://<<Public IP>>:9000
+ 		- Set new admin pw
 
  	- Generate the Token on SonarQube
- 	- Use the token to integrate the SonarQube with Jenkins
- 	- Administration => Security => Click on Tokens (Update Tokens) => token-for-jenkins => Copy Token
+ 		- Use the token to integrate the SonarQube with Jenkins
+ 		- Administration => Security => Click on Tokens (Update Tokens) => jenkins-sonarqube-token => Copy Token
+   		- Ex: squ_cd96a91b6f3260f12872d8c353682de05245df00	
 
- 	- Jenkins => Manage Jenkins => Credentials 
- 	- => Add Credentials => Secret Text => ID:SonarQube-Token => Secret: Paste Token
+ 	- Jenkins => Manage Jenkins => Credentials (Global credentials (unrestricted))
+ 		- => Add Credentials => Secret Text => ID:SonarQube-Token => Secret: Paste Token => Create
 
  	- Jenkins => Manage Jenkins => System => SonarQube servers 
- 	- => Name: SonarQube-Server => URL: http://<<privateEC2IP>>:9000
- 	- => Server authentication toekn: Select the token => Apply => Save
+	 	- => Name: SonarQube-Server => URL: http://<<privateEC2IP>>:9000
+	 	- => Server authentication toekn: Select the token (Ex: jenkins-sonarqube-token) => Apply => Save
 
- 	- http://<<Public IP>>:9000 => Quality Gates => Create 
- 	- => SonarQube-Quality-Gate => Save
+ 	- SonarQube UI:
+  		- => http://<<Public IP>>:9000 => Quality Gates (Menu option) => Create 
+ 		- => SonarQube-Quality-Gate => Save
 
-    - http://<<Public IP>>:9000 => Adminstration => Configuration => Webhooks => Create
-    	- => jenkins => URL: http://<<privateEC2IP>>:8080/sonarqube-webhook => Create
-   	- => Verify
+    	- Create Webhook via SonarQube UI (to integrate with the Jenkins)
+     		- http://<<Public IP>>:9000 => Adminstration => Configuration => Webhooks => Create
+    		- => jenkins => URL: http://<<privateEC2IP>>:8080/sonarqube-webhook => Create
+      		- Ex: http://172.31.27.171:8080/sonarqube-webhook/ 	
+   		- => Verify
 
 ===========================================================================================    
 
 7. Create Jenkins Pipeline to Build and Push Docker Image to DockerHub
 	- Jenkins => New Item => Name: Swiggy-CICD => Pipeline => Ok
-	- => Discard old builds: Max # of builds: 2
+		- => Discard old builds: Max # of builds: 2
 
 	- Pipeline Script: Copy the steps until Trivy first
-	- => (tools: jdk, nodejs in jenkins, 
-	- => environment: Scanner_Home: 'sonarqube-scanner',  
-	- => clean the workspace
-	- => checkout from github => privide the git repo url with .git
-	- => Sonarqube-Analysis => Provide project name: Swiggy-CICD && project key: Swiggy-CICD
-	- => Quality Gate: Cred Token: 'SonarQube-Token' to connect SonarQube to Jenkins
-	- => Install Dependencies
-	- => Trivy FS Scan
-	- => )
-	- =>    => Apply => Save
-	- => => Build Now
+		- => (
+  		- => tools:
+    		- => jdk, nodejs in jenkins, 
+		- => environment: Scanner_Home: 'sonarqube-scanner',  
+		- => clean the workspace
+		- => checkout from github => privide the git repo url with .git
+		- => Sonarqube-Analysis => Provide project name: Swiggy-CICD && project key: Swiggy-CICD
+		- => Quality Gate: Cred Token: 'SonarQube-Token' to connect SonarQube to Jenkins
+		- => Install Dependencies
+		- => Trivy FS Scan
+		- => )
+		- => Apply => Save
+		- => => Build Now
 
 ===========================================================================================
 
