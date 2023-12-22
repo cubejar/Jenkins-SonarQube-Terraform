@@ -305,12 +305,22 @@ Note: trivy scan results
 		
 		5--Setup Kubernetes using eksctl
 		   Refer--https://github.com/aws-samples/eks-workshop/issues/734
+		   Note: Change the region here
 
-     
+     		   Example: To create EKS cluster in US-WEST Region
+
 			eksctl create cluster --name virtualtechbox-cluster \
-			--region ap-south-1 \
+			--region us-west-2 \
 			--node-type t2.small \
-			--nodes 3 \
+			--nodes 3 \     		
+
+     		   Example: To create EKS cluster in US-WEST Region
+     
+			// eksctl create cluster --name virtualtechbox-cluster \
+			// --region ap-south-1 \
+			// --node-type t2.small \
+			// --nodes 3 \
+
 			
    		6--Verify Cluster with below command
      
