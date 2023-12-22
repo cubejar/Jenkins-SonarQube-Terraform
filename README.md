@@ -259,22 +259,21 @@ Note: trivy scan results
 
 13. Setup to create AWS EKS cluster and Download the Config/Secret file for the EKS cluster
    - Install the kubectl in the EC2   
-   - => apt update
-   - => install curl
-   - => kubectl version --client
+	   - => apt update
+	   - => install curl
+	   - => kubectl version --client
 
    - Install AWS CLI
-   - => unzip
-   - => sudo ./aws/install
-   - => aws --version
+	   - => unzip
+	   - => sudo ./aws/install
+	   - => aws --version
 
    - Install EKSCTL
-   - => eksctl version: 0.164.0
+	   - => eksctl version: 0.164.0
 
    - Create and add IAM role to the EC2 instance
-   - => IAM => Roles => Create Role => AWS Service => EC2 => Admin => name: "eksctl_role" => Create
-
-   - EC2 => Actions => Security => Modify IAM => Select the IAM role: "eksctl_role" => Update
+	   - => IAM => Roles => Create Role => AWS Service => EC2 => Admin => name: "eksctl_role" => Create
+     	   - => EC2 => Actions => Security => Modify IAM => Select the IAM role: "eksctl_role" => Update
      
    - Example:
 
