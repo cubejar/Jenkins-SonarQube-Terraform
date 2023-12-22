@@ -2,11 +2,11 @@
 
 1--Terraform commands
 ======================
-terraform init
-
-terraform plan
-
-terraform apply -auto-approve
+	terraform init
+	
+	terraform plan
+	
+	terraform apply -auto-approve
 
 2--main.tf
 ======================
