@@ -314,6 +314,7 @@ Note: trivy scan results
 			--nodes 3 \
 			
    		6--Verify Cluster with below command
+     
 			$ kubectl get nodes
 			$ kubectl get svc
 
