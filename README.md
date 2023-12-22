@@ -305,13 +305,15 @@ Note: trivy scan results
 			eksctl version
 		
 		5--Setup Kubernetes using eksctl
+		   Refer--https://github.com/aws-samples/eks-workshop/issues/734
+
      
-			Refer--https://github.com/aws-samples/eks-workshop/issues/734
 			eksctl create cluster --name virtualtechbox-cluster \
 			--region ap-south-1 \
 			--node-type t2.small \
 			--nodes 3 \
-			5-- Verify Cluster with below command
+			
+   		6--Verify Cluster with below command
 			$ kubectl get nodes
 			$ kubectl get svc
 
