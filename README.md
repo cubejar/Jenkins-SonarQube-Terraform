@@ -53,29 +53,29 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 	  	- create an admin user/password
 
   	- Jenkins => plugins: Install   
-  	- Eclipse Temurin installer
-  	- SonarQube Scanner
-  	- Sonar Quality Gates
-  	- Quality Gates
-  	- NodeJS 1.6.1
-  	- Docker 
-  	- Docker Commons
-  	- Docker Pipeline
-  	- Docker API
-  	- docker-build-step
+	  	- Eclipse Temurin installer
+	  	- SonarQube Scanner
+	  	- Sonar Quality Gates
+	  	- Quality Gates
+	  	- NodeJS 1.6.1
+	  	- Docker 
+	  	- Docker Commons
+	  	- Docker Pipeline
+	  	- Docker API
+	  	- docker-build-step
 
   	- Tools:
-  	- Manage Jenkins => Tools
-  	- Add NodeJS => node16
+	  	- Manage Jenkins => Tools
+	  	- Add NodeJS => node16
 
   	- JDK installation
-  	- jdk17 => Add installer => install from adaptium.net => jdk-17.0.8.1+1
+  		- jdk17 => Add installer => install from adaptium.net => jdk-17.0.8.1+1
 
   	- Docker: Add docker
-  	- docker => Install automatically => Add installer => latest => Download from docker
+  		- docker => Install automatically => Add installer => latest => Download from docker
 
   	- SonarQube:
-  	- sonarqube-scanner => Install automatically => Install from Maven Central : 5.0.1.3006
+  		- sonarqube-scanner => Install automatically => Install from Maven Central : 5.0.1.3006
 
 ===========================================================================================
 
@@ -99,8 +99,8 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
  	- => SonarQube-Quality-Gate => Save
 
     - http://<<Public IP>>:9000 => Adminstration => Configuration => Webhooks => Create
-    - => jenkins => URL: http://<<privateEC2IP>>:8080/sonarqube-webhook => Create
-    - => Verify
+    	- => jenkins => URL: http://<<privateEC2IP>>:8080/sonarqube-webhook => Create
+   	- => Verify
 
 ===========================================================================================    
 
