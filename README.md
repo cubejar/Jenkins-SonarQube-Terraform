@@ -229,16 +229,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 			                 }
 			             }
 			         }
-			         stage("TRIVY"){
-			             steps{
-			                 sh "trivy image cubejar/swiggy-clone:latest > trivyimage.txt" 
-			             }
-			         }
 
-
-Note: trivy scan results
-- => Login to EC2 instance 
-- => You can find the trivy scan results here: /var/lib/jenkins/workspace/Swiggy-CICD/trivyimage.txt
   
 ===========================================================================================
 
@@ -247,6 +238,18 @@ Note: trivy scan results
    - => Trivy
    - => Apply
    - => Save
+
+
+			         stage("TRIVY"){
+			             steps{
+			                 sh "trivy image cubejar/swiggy-clone:latest > trivyimage.txt" 
+			             }
+			         }
+
+
+Note: trivy scan results
+   - => Login to EC2 instance 
+   - => You can find the trivy scan results here: /var/lib/jenkins/workspace/Swiggy-CICD/trivyimage.txt
 
 ===========================================================================================
 
