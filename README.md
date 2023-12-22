@@ -93,7 +93,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
  	- Generate the Token on SonarQube
  		- Use the token to integrate the SonarQube with Jenkins
- 		- Administration => Security => Click on Tokens (Update Tokens) => jenkins-sonarqube-token => Copy Token
+ 		- Administration => Security => Click on Tokens (Update Tokens) => jenkins-sonarqube-token (Ex: token-for-jenkins) => Copy Token
    		- Ex: squ_cd96a91b6f3260f12872d8c353682de05245df00	
 
  	- Jenkins => Manage Jenkins => Credentials (Global credentials (unrestricted))
@@ -101,7 +101,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
  	- Jenkins => Manage Jenkins => System => SonarQube servers 
 	 	- => Name: SonarQube-Server => URL: http://<<privateEC2IP>>:9000
-	 	- => Server authentication toekn: Select the token (Ex: jenkins-sonarqube-token) => Apply => Save
+	 	- => Server authentication token: Select the token (Ex: jenkins-sonarqube-token) => Apply => Save	
 
  	- SonarQube UI:
   		- => http://<<Public IP>>:9000 => Quality Gates (Menu option) => Create 
@@ -116,7 +116,8 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 ===========================================================================================    
 
 7. Create Jenkins Pipeline to Build and Push Docker Image to DockerHub
-	- Jenkins => New Item => Name: Swiggy-CICD => Pipeline => Ok
+	
+ 	- Jenkins => New Item => Name: Swiggy-CICD => Pipeline => Ok
 		- => Discard old builds: Max # of builds: 2 	
 
 	- Pipeline Script: Copy the steps until Trivy first
@@ -133,6 +134,58 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 		- => )
 		- => Apply => Save
 		- => => Build Now
+
+		Ex:
+
+   		pipeline{
+		     agent any
+		     
+		     tools{
+		         jdk 'jdk17'
+		         nodejs 'node16'
+		     }
+		     environment {
+		         SCANNER_HOME=tool 'sonarqube-scanner'
+		     }
+		     
+		     stages {
+		         stage('Clean Workspace'){
+		             steps{
+		                 cleanWs()
+		             }
+		         }
+		         stage('Checkout from Git'){
+		             steps{
+		                 git branch: 'main', url: 'https://github.com/Ashfaque-9x/a-swiggy-clone.git'
+		             }
+		         }
+		         stage("Sonarqube Analysis "){
+		             steps{
+		                 withSonarQubeEnv('SonarQube-Server') {
+		                     sh ''' $SCANNER_HOME/bin/sonar-scanner -Dsonar.projectName=Swiggy-CI \
+		                     -Dsonar.projectKey=Swiggy-CI '''
+		                 }
+		             }
+		         }
+		         stage("Quality Gate"){
+		            steps {
+		                 script {
+		                     waitForQualityGate abortPipeline: false, credentialsId: 'SonarQube-Token' 
+		                 }
+		             } 
+		         }
+		         stage('Install Dependencies') {
+		             steps {
+		                 sh "npm install"
+		             }
+		         }
+		         stage('TRIVY FS SCAN') {
+		             steps {
+		                 sh "trivy fs . > trivyfs.txt"
+		             }
+		         }
+		      }
+		   }
 
 ===========================================================================================
 
