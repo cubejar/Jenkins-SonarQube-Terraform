@@ -1,6 +1,6 @@
 resource "aws_instance" "web" {
-  #ami                    = "ami-0287a05f0ef0e9d9a"      # ap-south-1  # change ami id for different region
-  # ami                    = "ami-05fb0b8c1424f266b"     # us-east-2
+  #ami                    = "ami-0287a05f0ef0e9d9a"      # ap-south-1   # change ami id for different region
+  # ami                   = "ami-05fb0b8c1424f266b"      # us-east-2
   ami                    = "ami-008fe2fc65df48dac"       # us-west-2
   instance_type          = "t2.large"
   key_name               = "rsa-demo"              #change key name as per your setup
