@@ -237,9 +237,10 @@ Ex:
 			         }
 
 
-Note:
-- => You can find the trivy scan results here : /var/lib/jenkins/workspace/Swiggy-CICD/trivyimage.txt
-
+Note: trivy scan results
+- => Login to EC2 instance 
+- => You can find the trivy scan results here: /var/lib/jenkins/workspace/Swiggy-CICD/trivyimage.txt
+  
 ===========================================================================================
 
 11. Add stage to scan the DockerHub image
