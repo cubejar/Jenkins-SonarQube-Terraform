@@ -329,12 +329,7 @@ Note: trivy scan results
 
 ===========================================================================================
 
-14. Create EKS cluster
-    - => eksctl create cluster --name <<NAME>> --region <<REGION>> --node-type t2.small --nodes 3
-
-===========================================================================================
-
-15. Copy and rename the KubeConfig file 
+14. Copy and rename the KubeConfig file 
    - kubeconfig file location => /home/ubuntu/.kube/config 
    - => Save a copy from /home/ubuntu/.kube/config /home/ubuntu/secret.txt => Copy out this file
    - => This file will be used to integrate the Jenkins with EKS cluster
@@ -344,7 +339,7 @@ Note: trivy scan results
 
 ===========================================================================================
 
-16. Configure the Jenkins Pipeline to Deploy Application on EKS
+15. Configure the Jenkins Pipeline to Deploy Application on EKS
    - Integrate the Jenkins with AWS EKS cluster, we need to update the jenkins pipeline
    - Jenkins => Deploy 4 plugins => Available plugins => Kubernetes 
    - => Kubernetes
@@ -355,13 +350,13 @@ Note: trivy scan results
      
 ===========================================================================================
 
-17. Create a secret file from the kubernetes config. This will be used to add the Kubernetes Credentials in Jenkins
+16. Create a secret file from the kubernetes config. This will be used to add the Kubernetes Credentials in Jenkins
    - => Manage Jenkins => Credentials => Add Cred => Kind: Secret File => ID: kubernetes
    - => Choose File => Select the secret.txt => Create
 
 ===========================================================================================
 
-18. Update the Jenkins pipeline with the "secret.txt" (copy of .kube/config file)
+17. Update the Jenkins pipeline with the "secret.txt" (copy of .kube/config file)
    - Steps: Deploy to Kubernetes
    - => Pipeline Syntax: Select: WithKubeConfig: Configure Kubernetes CLI (kubectl) 
    - => Cred Name: kubernetes(secret.txt)            
@@ -370,7 +365,7 @@ Note: trivy scan results
 
 ===========================================================================================
 
-19. Git hub repo:
+18. Git hub repo:
    - It has the kubernetes manifest file
    - Deploy.yaml: selector name and svc name to be matched
    - image: name to be matched the dockerhub image name
@@ -379,10 +374,14 @@ Note: trivy scan results
 
 ===========================================================================================
 
-20. Set the Trigger and verify the CICD pipeline
+19. Set the Trigger and verify the CICD pipeline
    - Jenkins => Configure => Select "GitHub Project": <<GITPROJECTURL>> Ex: https://github.com/cubejar/a-swiggy-clone 
    - Jenkins => Configure => Select "Build Trigger => GitHub hook trigger for GITScm polling"
    - Apply => Save
+
+===========================================================================================
+
+20. Update the GIT Webhook with Jenkins url
 
    - GitHub: Select the project => Settings => Webhooks => Add Webhooks => Payload URL
    - => <<Enter the Jenkins URL>>/github-webhook/   # Ex: http://54.213.190.162:8080/github-webhook/
