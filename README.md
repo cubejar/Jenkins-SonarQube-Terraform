@@ -302,6 +302,7 @@ Note: trivy scan results
 			eksctl version
 		
 		4--Setup Kubernetes using eksctl
+     
 			Refer--https://github.com/aws-samples/eks-workshop/issues/734
 			eksctl create cluster --name virtualtechbox-cluster \
 			--region ap-south-1 \
