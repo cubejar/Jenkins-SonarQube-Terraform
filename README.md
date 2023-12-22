@@ -157,7 +157,7 @@ Ex:
 				 }
 				 stage('Checkout from Git'){
 				     steps{
-					 git branch: 'main', url: 'https://github.com/Ashfaque-9x/a-swiggy-clone.git'
+					 git branch: 'main', url: 'https://github.com/cubejar/a-swiggy-clone'
 				     }
 				 }
 				 stage("Sonarqube Analysis "){
