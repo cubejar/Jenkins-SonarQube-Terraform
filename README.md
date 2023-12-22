@@ -278,7 +278,9 @@ Note: trivy scan results
      
    - Example:
 
-		1--Install kubectl on Jenkins
+   		1--Login to the EC2 instance 
+
+     		2--Install kubectl on Jenkins 
 	
 			 sudo apt update
 			 sudo apt install curl
@@ -286,7 +288,7 @@ Note: trivy scan results
 			 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 			 kubectl version --client
 		
-		2--Install AWS Cli
+		3--Install AWS Cli
 		
 			curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 			sudo apt install unzip
@@ -294,14 +296,14 @@ Note: trivy scan results
 			sudo ./aws/install
 			aws --version
 			
-		3--Installing  eksctl
+		4--Installing  eksctl
 		
 			curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 			cd /tmp
 			sudo mv /tmp/eksctl /bin
 			eksctl version
 		
-		4--Setup Kubernetes using eksctl
+		5--Setup Kubernetes using eksctl
      
 			Refer--https://github.com/aws-samples/eks-workshop/issues/734
 			eksctl create cluster --name virtualtechbox-cluster \
