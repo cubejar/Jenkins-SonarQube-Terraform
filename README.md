@@ -370,11 +370,12 @@ Note: trivy scan results
 ===========================================================================================
 
 20. Set the Trigger and verify the CICD pipeline
-   - Jenkins => Configure => GitHub Project: GITPROJECTURL
-   - => Build Trigger => GitHub hook trigger for GITScm polling
+   - Jenkins => Configure => Select "GitHub Project": <<GITPROJECTURL>> Ex: https://github.com/cubejar/a-swiggy-clone 
+   - Jenkins => Configure => Select "Build Trigger => GitHub hook trigger for GITScm polling"
+   - Apply => Save
 
    - GitHub: Select the project => Settings => Webhooks => Add Webhooks => Payload URL
-   - => <<Enter the Jenkins URL>>/github-webhook/
+   - => <<Enter the Jenkins URL>>/github-webhook/   # Ex: http://54.213.190.162:8080/github-webhook/
    - => Add Webhooks
    - => Refresh
    - => Verify
