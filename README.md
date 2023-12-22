@@ -281,14 +281,14 @@ Note: trivy scan results
    		1--Login to the EC2 instance
 
    			
-     		2--Install kubectl on Jenkins 
-	
+		2--Install kubectl on Jenkins
+     
 			 sudo apt update
 			 sudo apt install curl
 			 curl -LO https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl
 			 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 			 kubectl version --client
-		
+				
 		3--Install AWS Cli
 		
 			curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
