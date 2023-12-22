@@ -184,8 +184,8 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 		                 sh "trivy fs . > trivyfs.txt"
 		             }
 		         }
-		      }
 		   }
+		   
 
 ===========================================================================================
 
