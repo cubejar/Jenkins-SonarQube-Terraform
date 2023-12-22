@@ -135,8 +135,7 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 		- => Apply => Save
 		- => => Build Now
 
-Ex:
-======================
+	- Example:
 
 			pipeline{
 			     agent any
