@@ -142,7 +142,10 @@
 	--region ap-south-1 \
 	--node-type t2.small \
 	--nodes 3 \
-	5-- Verify Cluster with below command
+
+5-- Verify Cluster with below command
+=====================================
+
 	$ kubectl get nodes
 	$ kubectl get svc
 
