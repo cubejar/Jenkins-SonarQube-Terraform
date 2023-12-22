@@ -139,7 +139,6 @@ Terraform - GIT - SonarQube - Trivy - DockerHub - EKS
 
    		pipeline{
 		     agent any
-		     
 		     tools{
 		         jdk 'jdk17'
 		         nodejs 'node16'
