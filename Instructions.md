@@ -1,10 +1,16 @@
-Video Link -- https://youtu.be/dMVrwaYojYs
 ============================================================================================================================================
+
 1--Terraform commands
+======================
 terraform init
+
 terraform plan
+
 terraform apply -auto-approve
+
 2--main.tf
+======================
+
 resource "aws_instance" "web" {
   ami                    = "ami-0287a05f0ef0e9d9a"      #change ami id for different region
   instance_type          = "t2.large"
@@ -52,6 +58,8 @@ resource "aws_security_group" "Jenkins-VM-SG" {
 }
 
 3--provider.tf
+======================
+
 terraform {
   required_providers {
     aws = {
@@ -67,6 +75,8 @@ provider "aws" {
 }
 
 4--install.sh
+======================
+
 #!/bin/bash
 sudo apt update -y
 wget -O - https://packages.adoptium.net/artifactory/api/gpg/key/public | tee /etc/apt/keyrings/adoptium.asc
@@ -81,7 +91,7 @@ sudo apt-get install jenkins -y
 sudo systemctl start jenkins
 sudo systemctl status jenkins
 
-##Install Docker and Run SonarQube as Container
+## Install Docker and Run SonarQube as Container
 sudo apt-get update
 sudo apt-get install docker.io -y
 sudo usermod -aG docker ubuntu
@@ -90,12 +100,13 @@ newgrp docker
 sudo chmod 777 /var/run/docker.sock
 docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 
-#install trivy
+## install trivy
 sudo apt-get install wget apt-transport-https gnupg lsb-release -y
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg > /dev/null
 echo "deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee -a /etc/apt/sources.list.d/trivy.list
 sudo apt-get update
 sudo apt-get install trivy -y
+
 =============================================================================================================================================================================================
 1--Install kubectl on Jenkins
  sudo apt update
@@ -128,7 +139,9 @@ eksctl create cluster --name virtualtechbox-cluster \
 5-- Verify Cluster with below command
 $ kubectl get nodes
 $ kubectl get svc
+
 =============================================================================================================================================================================================
+
 1--Jenkins Pipeline Script
 pipeline{
      agent any
@@ -211,10 +224,14 @@ pipeline{
 
      }
  }
+ 
 =============================================================================================================================================================================================
+
 Cleanup
+
 1--Delete EKS Cluster
 $ eksctl delete cluster virtualtechbox-cluster --region ap-south-1     OR    eksctl delete cluster --region=ap-south-1 --name=virtualtechbox-cluster
 2--Delete EC2 Instance with below Terraform Command
 terraform destroy
+
 =============================================================================================================================================================================================
