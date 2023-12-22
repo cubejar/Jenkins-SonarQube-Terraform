@@ -217,6 +217,25 @@ Ex:
    - => tag: Tag the image name: dockerhub user/<<IMAGE>>:latest
    - => docker push
 
+   - => Note: Add the following stages:
+     
+				stage("Docker Build & Push"){
+			             steps{
+			                 script{
+			                    withDockerRegistry(credentialsId: 'dockerhub', toolName: 'docker'){   
+			                        sh "docker build -t swiggy-clone ."
+			                        sh "docker tag swiggy-clone cubejar/swiggy-clone:latest"
+			                        sh "docker push cubejar/swiggy-clone:latest "
+			                     }
+			                 }
+			             }
+			         }
+			         stage("TRIVY"){
+			             steps{
+			                 sh "trivy image cubejar/swiggy-clone:latest > trivyimage.txt" 
+			             }
+			         }
+
 ===========================================================================================
 
 11. Add stage to scan the DockerHub image
