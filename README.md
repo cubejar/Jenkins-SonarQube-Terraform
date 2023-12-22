@@ -345,15 +345,15 @@ Note: trivy scan results
      
 ===========================================================================================
 
-17. Add the Kubernetes Credentials in Jenkins
-   - Manage Jenkins => Credentials => Add Cred => Kind: Secret File => ID: kubernetes
+17. Create a secret file from the kubernetes config. This will be used to add the Kubernetes Credentials in Jenkins
+   - => Manage Jenkins => Credentials => Add Cred => Kind: Secret File => ID: kubernetes
    - => Choose File => Select the secret.txt => Create
 
 ===========================================================================================
 
-18. Update the Jenkins pipeline
+18. Update the Jenkins pipeline with the "secret.txt" (copy of .kube/config file)
    - Steps: Deploy to Kubernetes
-   - Pipeline Syntaz: Select: WithKubeConfig: Configure Kubernetes CLI (kubectl) 
+   - => Pipeline Syntax: Select: WithKubeConfig: Configure Kubernetes CLI (kubectl) 
    - => Cred Name: kubernetes(secret.txt)            
    - => Generate pipeline script
    - => Apply => Save
