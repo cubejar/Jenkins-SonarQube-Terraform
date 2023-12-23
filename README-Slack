@@ -1,0 +1,29 @@
+Integrate with Slack in Jenkins
+
+1. Create new workspace in Slack
+   Add a workspace in slack: Ex: jarkube => ## Note: Subdomain name to be used
+
+2. Create new channel in Slack
+   Add a new channel in slack: Ex: project-cicd
+
+3. Jenkins => Dashboard => Manage Jenkins => Plugins => Slack Notification Plugin (Version684.v833089650554) => Apply => Save
+
+4. Jenkins => Dashboard => Manage Jenkins => System => (Search Slack) => (Workspace/Credentials/Default channel/member id)
+   => Provide the Workspace: jarkubeinfin  ## Note: Subdomain name to be used
+   => Credentials => Add => Jenkins => Add Credentials => Kind 
+      => Secret Text => Paste the "<<Integration Token Credential ID>>" on Secret => Give a description "Slack-Jenkins-Secret" =>
+      => Credentials => Select the "Slack-Jenkins-Secret" => z007bpPE9toUOVLFLVP39c
+      => Default channel / member id: project-cicd
+      => Save => Test Connection
+      => Slack/Jenkins plugin: you're all set on http://154.213.190.162:8080/
+
+5. For each Project that you would like receive notifications for, choose Configure from the project's menu in Jenkins.
+
+6. Then you'll need to add Slack Notifications to the Post-build Actions for this project.
+
+7. In the Slack Notifications section, choose the events you'd like to be notified about. (Ex. Notify build start/aborted/failure/ etc)
+
+
+
+
+   
